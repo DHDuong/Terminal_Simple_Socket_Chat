@@ -14,14 +14,14 @@ int main(){
     int opt = 1;
     int addrlen = sizeof(address);
     //tao socket
-    // tao file mo ta soket
+    //tao file mo ta soket
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
     {
         perror("socket failed");
         exit(EXIT_FAILURE);
     }
     //gan dia chi cho socket
-    // gan cong port 8080
+    //gan port 8090
     if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
     {
         perror("setsockopt");
@@ -29,8 +29,8 @@ int main(){
     }
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons( PORT );  //gan cong la 8080
-    // bind
+    address.sin_port = htons( PORT );  //gan cong la 8090
+    //bind
     if (bind(server_fd, (struct sockaddr *)&address, sizeof(address))<0)
     {
         perror("bind failed");
